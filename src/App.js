@@ -39,14 +39,14 @@ class App extends Component {
           );
         }
 
-        this.setState({ hits: [...this.state.hits, ...hits] });
+        this.setState(prevState => ({ hits: [...prevState.hits, ...hits] }));
         window.scrollTo({
           top: document.documentElement.scrollHeight,
           behavior: 'smooth',
         });
       } catch (error) {
         this.setState({ status: 'rejected' });
-        console.log(error.message);
+        console.error(error.message);
       }
     }
   }
